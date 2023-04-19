@@ -26,13 +26,18 @@ galleryItems.forEach(item => {
     img.alt = item.description;
 
     // Добавляем обработчик события click на изображение
-    img.addEventListener('click', () => {
+    img.addEventListener('click', (event) => {
         event.preventDefault();
         // Открываем изображение в модальном окне BasicLightbox
         const fullImg = basicLightbox.create(`
           <img src="${item.original}" alt="${item.description}" />
         `);
         fullImg.show();
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                fullImg.close();
+            }
+        });
     });
 
     // Добавляем новый элемент <img> в новый элемент <a>
