@@ -23,15 +23,19 @@ galleryItems.forEach(item => {
     const img = document.createElement('img');
     img.classList.add('gallery__image');
     img.src = item.preview;
+    img.dataset.source = item.original;
+
     img.alt = item.description;
 
     // Добавляем обработчик события click на изображение
     img.addEventListener('click', (event) => {
         event.preventDefault();
         // Открываем изображение в модальном окне BasicLightbox
+        // const fullImg = basicLightbox.create(`
+        //   <img src="${item.original}" alt="${item.description}" />
+        // `);
         const fullImg = basicLightbox.create(`
-          <img src="${item.original}" alt="${item.description}" />
-        `);
+            <img src="${img.dataset.source}" alt="${img.alt}" />`);
         fullImg.show();
         document.addEventListener('keydown', (event) => {
             if (event.key === 'Escape') {
