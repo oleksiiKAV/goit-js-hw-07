@@ -1,0 +1,10 @@
+node_modules/.package-lock.json
+node_modules/basiclightbox/CHANGELOG.md
+node_modules/basiclightbox/LICENSE
+node_modules/basiclightbox/package.json
+node_modules/basiclightbox/README.md
+node_modules/basiclightbox/dist/basicLightbox.min.css
+node_modules/basiclightbox/dist/basicLightbox.min.js
+node_modules/basiclightbox/src/.DS_Store
+node_modules/basiclightbox/src/scripts/main.js
+node_modules/basiclightbox/src/styles/main.scss
