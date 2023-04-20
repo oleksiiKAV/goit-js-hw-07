@@ -5,21 +5,27 @@ import { galleryItems } from './gallery-items.js';
 
 console.log(galleryItems);
 
-// Получаем элемент <ul> галереи
-const gallery = document.querySelector('.gallery');
 
-// Перебираем массив объектов изображений и добавляем каждое изображение в галерею
+// <ul> галереи
+const gallery = document.querySelector('.gallery');
+// add h1
+const h1 = document.createElement("h1");
+h1.textContent = "GOIT-JS-07 Image gallery Task 01 basiclightbox";
+// h1.style.visibility = "hidden";
+gallery.before(h1);
+h1.style.display = "none";
+// add items
 galleryItems.forEach(item => {
-    // Создаем новый элемент <li> с классом "gallery__item"
+    // <li> with class "gallery__item"
     const li = document.createElement('li');
     li.classList.add('gallery__item');
 
-    // Создаем новый элемент <a> с классом "gallery__link" и атрибутом href
+    // add link <a> with class "gallery__link" and attr href
     const link = document.createElement('a');
     link.classList.add('gallery__link');
     link.href = item.original;
 
-    // Создаем новый элемент <img> с классом "gallery__image" и атрибутами src и alt
+    // Create <img> with class "gallery__image" and attr src и alt
     const img = document.createElement('img');
     img.classList.add('gallery__image');
     img.src = item.preview;
@@ -27,16 +33,14 @@ galleryItems.forEach(item => {
 
     img.alt = item.description;
 
-    // Добавляем обработчик события click на изображение
+    // Add action into img
     img.addEventListener('click', (event) => {
         event.preventDefault();
-        // Открываем изображение в модальном окне BasicLightbox
-        // const fullImg = basicLightbox.create(`
-        //   <img src="${item.original}" alt="${item.description}" />
-        // `);
+
         const fullImg = basicLightbox.create(`
             <img src="${img.dataset.source}" alt="${img.alt}" />`);
         fullImg.show();
+        // add Esc
         document.addEventListener('keydown', (event) => {
             if (event.key === 'Escape') {
                 fullImg.close();
@@ -44,12 +48,12 @@ galleryItems.forEach(item => {
         });
     });
 
-    // Добавляем новый элемент <img> в новый элемент <a>
+    // Add <img> into <a>
     link.appendChild(img);
 
-    // Добавляем новый элемент <a> в новый элемент <li>
+    // Add <a> into <li>
     li.appendChild(link);
 
-    // Добавляем новый элемент <li> в <ul> галереи
+    // Add <li> into <ul>
     gallery.appendChild(li);
 });

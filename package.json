@@ -1,5 +1,8 @@
 {
   "devDependencies": {
     "basiclightbox": "^5.0.4"
+  },
+  "dependencies": {
+    "simplelightbox": "^2.13.0"
   }
 }
